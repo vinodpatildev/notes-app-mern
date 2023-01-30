@@ -1,0 +1,56 @@
+sign up for mongodb atlast account
+add your ip to whitelist
+create new database
+	create new user with password
+on database home
+	select connect
+	connect your application
+	copy string 
+	open powershell in one layer obove the backend shift + right click
+	open folder in vs code "code ."
+
+in ".gitignore" consider ".env"
+create ".env" in root folder
+	paste MONGO_CONNECTION_STRING=mongodb+srv://vinodpatildev:<password>@cluster0.aci1b5m.mongodb.net/?retryWrites=true&w=majority
+	make PORT=5000
+	move ".env" to backend folder
+
+cd backend
+npm i dotenv [allows to load end files]
+npm i mongoose [package to work easily with mongodb]
+
+in server.ts
+	import "dotenv/config";
+	import mongoose from "mongoose";
+
+	mongoose.connect(process.env.MONGO_CONNECTION_STRING!)
+    .then(() => {
+        console.log("Mongoose connected.");
+        app.listen(port, () => {
+            console.log("Server running on port :" + port);
+        });
+    })
+    .catch(console.error)
+
+
+npm start [start project[
+rs [ restart ]
+
+Envalid package [to validate environment variables]
+	npm i envalid
+	create src/util/validateEnv.ts
+		import { cleanEnv } from "envalid";
+		import { port, str } from "envalid/dist/validators";
+
+		export default cleanEnv(process.env,{
+    			MONGO_CONNECTION_STRING: str(),
+    			PORT: port()
+		});
+
+	inside server.ts
+		import env from "./util/validateEnv.ts"
+
+Implement seperation of consern - seperate code with endpoints from configuration code
+	try to import app at top of server.ts [ never run if not done so. ]
+	
+
