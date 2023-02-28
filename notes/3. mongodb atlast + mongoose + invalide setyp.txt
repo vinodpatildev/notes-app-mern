@@ -16,7 +16,7 @@ create ".env" in root folder
 	move ".env" to backend folder
 
 cd backend
-npm i dotenv [allows to load end files]
+npm i dotenv [allows to load env files]
 npm i mongoose [package to work easily with mongodb]
 
 in server.ts
@@ -33,7 +33,7 @@ in server.ts
     .catch(console.error)
 
 
-npm start [start project[
+npm start [ start project ]
 rs [ restart ]
 
 Envalid package [to validate environment variables]

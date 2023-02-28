@@ -18,15 +18,15 @@ Automate compilation of .ts files and run them using node
 	npm install --save-dev nodemon [ automates running server using node - works with javascript ]
 	npm install -D ts-node [converts .ts to .js and runs with nodemon ]
 	npx nodemon src/server.ts
-	edite script in package.json
+	edit script in package.json
 		"start": "nodemon src/server.ts",
 		npm start
-	edite "main" in package.json to "dist/server.js" [for starting file]
+	edit "main" in package.json to "dist/server.js" [for starting file]
 
 install eslint [ helps to findout errors in app]
 	npm i -D eslint
 	npx eslint --init
-	in .eslintrc.js edite browser to node
+	in .eslintrc.js edit browser to node
 	"env": {
         "browser": true,
         "es2021": true

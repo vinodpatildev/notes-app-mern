@@ -1,0 +1,65 @@
+create models/note.ts
+	import { InferSchemaType, model, Schema } from "mongoose";
+
+	const noteSchema = new Schema({
+    		title: {type: String, required: true},
+    		text: {type: String}
+	},{
+    		timestamps : true
+	});
+
+	type Note = InferSchemaType<typeof noteSchema>;
+	export default model<Note>("Note", noteSchema);
+
+in app.ts
+	import NoteModel from "./models/note"
+	
+	------
+	import "dotenv/config";
+	import express from "express";
+	import NoteModel from './models/note';
+	const app = express();
+
+	app.get("/", async (req, res) => {
+    		const notes = await NoteModel.find().exec();
+    		res.status(200).json(notes);
+	);
+
+	export default app;
+	------
+
+in .env
+	edit MONGO_CONNECTION_STRING=mongodb+srv://vinodpatildev:SwZtNlCVBssfuQQe@cluster0.aci1b5m.mongodb.net/mern_notes_app?retryWrites=true&w=majority
+	before "?" add the database name , which will change database name in mongodb.
+
+app.ts file at the end:
+
+	import "dotenv/config";
+	import express, { NextFunction, Request, Response } from "express";
+	import NoteModel from './models/note';
+	const app = express();
+
+	app.get("/", async (req, res, next) => {
+    		try{
+        		// throw Error("Not reachable")
+        		const notes = await NoteModel.find().exec();
+        		res.status(200).json(notes);
+    		}catch(error){
+        		next(error);
+    		}
+	});
+
+	app.use((req,res,next) => {
+    		next(Error("Endpoint not found."));
+	})
+
+	app.use((error: unknown, req: Request, res: Response, next: NextFunction)=>{
+    		console.log(error);
+    		let errorMessage = "An unknown error occured.";
+    		if(error instanceof Error) errorMessage = error.message;
+    		res.status(500).json({error:errorMessage});
+	});
+
+	export default app;
+
+	
