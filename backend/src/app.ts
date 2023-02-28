@@ -4,7 +4,7 @@ import express from "express";
 const app = express();
 
 app.get("/", (req, res) => {
-    res.send("Hello fucking world!.");
+    res.send("Hello sheet world!.");
 });
 
 export default app;
