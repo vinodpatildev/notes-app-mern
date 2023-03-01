@@ -1,0 +1,13 @@
+create src/routes/notes.ts file
+	pase app.get(...) endpoint there
+
+endpoints are diveded in routes, controllers
+
+
+
+
+
+install morgan for logging
+	npm i morgan
+	
+	npm i --save-dev @types/morgan [ if types are not installed ]
