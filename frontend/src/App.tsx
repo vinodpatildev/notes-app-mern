@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
-import './App.css';
-import { Button } from 'react-bootstrap';
-import { Note } from "./models/note";
+import { Note as NoteModel } from "./models/note";
+import Note from "./components/Note";
 
 function App() {
-  const [notes, setNotes] = useState<Note[]>([]);
+  const [notes, setNotes] = useState<NoteModel[]>([]);
 
   useEffect(() => {
     async function loadNotes() {
@@ -23,12 +21,9 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          <code>{ notes.toString() }</code>
-        </p>        
-        
-      </header>
+      {
+        notes.map( note => ( <Note note={ note } key={ note._id } /> ) )
+      }
     </div>
   );
 }
