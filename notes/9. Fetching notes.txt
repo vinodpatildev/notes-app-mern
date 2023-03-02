@@ -1,0 +1,6 @@
+
+in package.json
+	set
+	"proxy":"http://localhost:5000",
+in App.tsx
+	const response = await fetch("/api/notes",{method:"GET"});
