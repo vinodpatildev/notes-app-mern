@@ -22,7 +22,8 @@ const NavBar = ({loggedInUser, onSignUpClicked, onLoginClicked, onLogoutSuccessf
                 <Navbar.Toggle aria-controls="main-navbar" />
                 <Navbar.Collapse id="main-navbar" >
                     <Nav>
-                        <Nav.Link as={Link} to="/privacy" > Privacy </Nav.Link>                        
+                        <Nav.Link as={Link} to="/privacy" > Privacy </Nav.Link> 
+                        <Nav.Link as={Link} to="https://vinodpatildev.github.io/"> Developer </Nav.Link>                       
                     </Nav>
                     <Nav className="ms-auto">
                         {
