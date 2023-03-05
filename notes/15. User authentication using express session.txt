@@ -1,0 +1,10 @@
+backend packages
+	bcrypt
+		npm i bcrypt
+	@types/bcrypt
+		npm i -D @types/bcrypt
+
+	npm install express-session
+	npm i -D @types/express-session
+
+	npm i connect-mongo
